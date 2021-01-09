@@ -1,0 +1,85 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CreateUserResponseDto {
+  ok: Boolean!
+}
+
+type PublicUser {
+  username: String!
+  email: String!
+  imgUrl: String!
+}
+
+type LoggedInUserDto {
+  _id: String
+  username: String
+  email: String
+  accessToken: String!
+}
+
+type ProductModel {
+  _id: String!
+  name: String!
+  price: Float
+  imgUrl: String!
+}
+
+type ProductListDto {
+  totalCounts: Int!
+  products: [ProductModel!]!
+}
+
+type ResponseStatus {
+  result: ResponseStatusEnum!
+}
+
+enum ResponseStatusEnum {
+  SUCCESS
+  FAILURE
+  UNKNOWN_ERROR
+}
+
+type CartProduct {
+  _id: String!
+  name: String!
+  price: Float
+  imgUrl: String!
+  quantity: Float!
+}
+
+type CartUser {
+  ownerId: String!
+  products: [CartProduct!]!
+}
+
+type Query {
+  users: [PublicUser!]!
+  userById: PublicUser!
+  productList(search: String, offset: Int, limit: Int): ProductListDto!
+  userCart: CartUser
+  userCartCount: Int
+}
+
+type Mutation {
+  register(input: CreateUserInputDto!): CreateUserResponseDto!
+  login(password: String!, email: String!): LoggedInUserDto!
+  saveCart(cartProductsInput: [SavedCartProductsInput!]!): CartUser!
+  deleteCart(productId: String!): ResponseStatus!
+}
+
+input CreateUserInputDto {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input SavedCartProductsInput {
+  _id: String!
+  quantity: Int!
+}
+
+type Subscription {
+  savedCartUpdated: CartUser
+}
