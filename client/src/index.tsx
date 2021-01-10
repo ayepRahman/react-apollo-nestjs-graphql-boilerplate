@@ -6,12 +6,10 @@ import { QueryParamProvider } from 'use-query-params';
 import { ThemeProvider } from 'styled-components';
 import App from 'containers/App';
 import theme from 'styles/theme';
-import { useApolloClientConfig } from 'apollo/hooks/useApolloClientConfig';
+import { client } from 'apollo';
 import * as serviceWorker from './serviceWorker';
 
 const Main: React.FC = () => {
-  const { client } = useApolloClientConfig();
-
   return (
     <React.StrictMode>
       <ApolloProvider client={client}>

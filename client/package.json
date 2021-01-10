@@ -16,6 +16,7 @@
     "change-case": "^4.1.1",
     "graphql": "^15.3.0",
     "lodash": "^4.17.20",
+    "lottie-react-web": "^2.2.2",
     "numeral": "^2.0.6",
     "plop": "^2.7.4",
     "polished": "^3.6.7",
